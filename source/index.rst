@@ -80,7 +80,11 @@ Getting more info
 .. toctree::
    :hidden:
    
-   Java Learning <docs/javalearning>
+   Computer <docs/computer>
+   Git <docs/gitlearning>
+   Vim <docs/vimlearning>
+   Web Note <docs/webnote>
+   Java <docs/javalearning>
    Big Data <docs/bigdata>
    Machine Learning <docs/machinelearning>
 
