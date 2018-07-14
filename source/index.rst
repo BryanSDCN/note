@@ -80,6 +80,9 @@ Getting more info
 .. toctree::
    :hidden:
    
+   Batch <docs/batch>
+   Linux <docs/Linux>
+   reStructuredText <docs/reST>
    Computer <docs/computer>
    Git <docs/gitlearning>
    Vim <docs/vimlearning>
