@@ -6,7 +6,7 @@ HAPPY FAMILY
 
 .. tip::
 
-    Write down everything what you want to write down! ^_^
+    Write down whatever you want to write down! ^_^
 
 
 .. image:: /images/home.jpg
