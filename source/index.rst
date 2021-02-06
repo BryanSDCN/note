@@ -1,7 +1,7 @@
 .. _home:
 
 ======================
-HaiboCi Note Home
+HAPPY FAMILY
 ======================
 
 .. tip::
