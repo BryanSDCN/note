@@ -111,3 +111,8 @@ Rollout switch是暖炉防止过热的保护设备之一。火焰正确的燃烧
 .. image:: /images/limitswitch.jpg
 
 
+参考链接
+===================
+
+#. https://www.hamiltonchinese.com/forum.php?mod=viewthread&tid=111058
+
