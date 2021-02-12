@@ -63,12 +63,54 @@ Readthedocs的使用
 
 *TBD*
 
+Windows开发环境快速搭建
+==========================
+
+.. important::
+
+    只针对Windows10系统，其他Windows系统可能有安装依赖问题
+
+1. 安装python3。
+#. 安装Vim for windows(GVim)。
+#. 安装Git for windows。
+#. 安装pip。
+#. 使用pip安装sphinx。
+
+   a. 打开cmd，运行安装命令： ``pip install -U sphinx``
+   #. 检查是否安装成功： ``sphinx-build --version``
+   #. 如果需要使用最新的开发版，则使用命令： ``pip install -U --pre sphinx``
+   #. 安装Read the Docs主题库，运行命令： ``pip install sphinx_rtd_theme``
+
+#. 获取实例，修改，编译。
+
+   a. 在需要存放实例的路径打开CMD ``ALT+D`` 输入CMD回车
+   #. 运行命令： ``git clone https://github.com/BryanSDCN/note.git``
+   #. 使用Vim打开工程主文件index.rst： ``vim source\index.rst`` ，修改并保存
+
+      + 如果遇到如下问题：
+
+        .. image:: /images/vimbug1.png
+         :alt: bug1
+
+        vim的rst语法文件有中文码问题，打开vim\\vim82\\syntax\\rst.vim，修改第123行。
+        
+      + 如果vim打开中文是乱码：
+
+        文件.vimrc中增加 ``set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936`` 。
+
+   #. 编译工程： ``make html`` ，查看编译结果： ``.\build\html\index.html`` 。
+
+      .. important::
+         如果编译之后网页没有更改，运行 ``make clean`` ，清除缓存，重新全部编译
+
+
 
 参考链接
 ======================
 
 #. http://www.jianshu.com/p/78e9e1b8553a
 #. http://wowubuntu.com/restructuredtext-sphinx.html
+#. https://zhuanlan.zhihu.com/p/27544821
 
 
 
