@@ -34,6 +34,7 @@ wget [参数] [URL地址]
 - -i, –input-file=FILE 下载在FILE文件中出现的URLs
 - -F, –force-html 把输入文件当作HTML格式文件对待
 - -B, –base=URL 将URL作为在-F -i参数指定的文件中出现的相对链接的前缀
+
 –sslcertfile=FILE 可选客户端证书
 –sslcertkey=KEYFILE 可选客户端证书的KEYFILE
 –egd-file=FILE 指定EGD socket的文件名
@@ -112,6 +113,7 @@ FTP 选项参数
 - -I, –include-directories=LIST 允许目录的列表
 - -X, –exclude-directories=LIST 不被包含目录的列表
 - -np, –no-parent 不要追溯到父目录
+
 wget -S –spider url 不下载只显示过程
 
 使用实例

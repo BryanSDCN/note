@@ -64,6 +64,7 @@ crontab的文件格式
 可以使用这种方法在$HOME目录中对crontab文件做一备份::
 
     $ crontab -l > $HOME/mycron
+
 这样，一旦不小心误删了crontab文件，可以用上一节所讲述的方法迅速恢复。
 
 编辑crontab文件
@@ -71,6 +72,7 @@ crontab的文件格式
 如果希望添加、删除或编辑crontab文件中的条目，而EDITOR环境变量又设置为vi，那么就可以用vi来编辑crontab文件::
 
     $ crontab -e
+
 可以像使用vi编辑其他任何文件那样修改crontab文件并退出。如果修改了某些条目或添加了新的条目，那么在保存该文件时， cron会对其进行必要的完整性检查。如果其中的某个域出现了超出允许范围的值，它会提示你。
 我们在编辑crontab文件时，没准会加入新的条目。例如，加入下面的一条：
 ::
@@ -192,6 +194,7 @@ crontab的文件格式
 例如，可以在crontab文件中设置如下形式，忽略日志输出::
 
     0 */3 * * * /usr/local/apache2/apachectl restart >/dev/null 2>&1
+
 "/dev/null 2>&1"表示先将标准输出重定向到/dev/null，然后将标准错误重定向到标准输出，由于标准输出已经重定向到了/dev/null，因此标准错误也会重定向到/dev/null，这样日志输出问题就解决了。
 
 系统级任务调度与用户级任务调度

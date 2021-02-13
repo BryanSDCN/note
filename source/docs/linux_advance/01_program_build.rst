@@ -20,6 +20,7 @@
 配置路径::
     
     ./configure --prefix=/usr/local/snmp
+
 --prefix是配置使用的最常用选项，设置程序安装的路径；
 
 编译
@@ -27,6 +28,7 @@
 编译使用make编译::
 
     make -f myMakefile
+
 通过-f选项显示指定需要编译的makefile；如果待使用makefile文件在当前路径，且文件名为以下几个，则不用显示指定：
 
 makefile Makefile
@@ -78,6 +80,7 @@ g++编译
 ::
 
     g++ -o unixApp unixApp.o a.o b.o
+
 选项说明：
 
 - -o:指明生成的目标文件
@@ -109,6 +112,7 @@ g++编译
 安装做的工作就简单多了，就是将生成的可执行文件拷贝到配置时设置的初始路径下::
 
     $make install
+
 其实 **install** 就是makefile中的一个规则，打开makefile文件后可以查看程序安装的所做的工作；
 
 总结
