@@ -2,7 +2,8 @@
 
 remember everything
 
-Hosting server: readthedocs.org
-Wiki: zaqizaba.rtfd.io
+Hosting server: https://readthedocs.org/
+
+Wiki: https://zaqizaba.readthedocs.io/
 
 
