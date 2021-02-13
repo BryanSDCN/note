@@ -8,6 +8,9 @@ reStructuredText是一种轻量级的文本标记语言，直译为：重构建�
 其一般保存的文件以.rst为后缀。在必要的时候，.rst文件可以被转化成PDF或者HTML格式，
 也可以有Sphinx转化为LaTex,man等格式，现在被广泛的用于程序的文档撰写。
 
+| 最好的官方教程：https://www.sphinx.org.cn/contents.html
+| 较好的中文教程：https://ebf-contribute-guide.readthedocs.io
+
 参考链接：
  
 | http://www.pythondoc.com/sphinx/index.html
@@ -457,31 +460,268 @@ __ SeayXu_
 	| **target** : 文本(URI或引用名称)将图片变为超链接引用(“可点击”)。可选参数是一个URI(相对或绝对)，或一个包含下划线前缀的引用名称。
 	| 以及通用选项 **:class:** and **:name:**.
 	
-代码指令
------------------------
-代码指令用于插入代码块，并可以实现语法高亮。
+代码
+=======================
 
-关于语法高亮： http://pygments.org/languages/
 
-下面是例子：
+支持的高亮语言：
+https://pygments.org/docs/lexers#lexers-for-various-shells
+
+该链接的使用方法如下：
+
+.. highlight:: rst
 
 ::
 
-	.. code:: python
-		:name: bbbb
+   .. highlight:: vim(Short names)
 
-		def my_function():
-			"just a test"
-			print 8/2
+   ::
 
-下面是效果：
+      此处为需要高亮的文本内容(所有Filenames类型文件中的内容会被按语法高亮)
 
-..	code:: python
-	:name: bbbb
-	
-	def my_function():
-	    "just a test"
-	    print 8/2
+快速定义代码块
+----------------------------------
+
+使用简便的预定义高亮语法高亮缩进，默认不带语言说明的都使用highlight定义的语言高亮，
+然后可以直接使用“::”两个冒号代替“code-block”指令快速定义其它代码块，
+直到下一个highlight指令，才会改变语言：
+
+.. highlight:: rst
+
+::
+
+   .. highlight:: sh
+
+   此指令后如下的“::”定义的块都会以sh语法进行高亮，直到遇到下一条highlight指令。
+
+   ::
+
+      #此命令在主机执行
+      sudo apt install python
+      echo "helloworld,this is a script test!"
+
+效果：
+
+.. highlight:: sh
+
+
+::
+
+   #此命令在主机执行
+   sudo apt install python
+   echo "helloworld,this is a script test!"
+
+
+code-block代码高亮
+---------------------------------------
+
+.. highlight:: rst
+
+shell 高亮测试
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+高亮语法：
+
+
+::
+
+   .. code-block:: sh
+      :caption: test
+      :name: test333
+      :emphasize-lines: 2
+      :linenos:
+
+      #此命令在主机执行
+      sudo apt install python
+      echo "helloworld,this is a script test!"
+
+效果：
+
+.. code-block:: sh
+   :caption: sh test
+   :name: test333
+   :emphasize-lines: 2
+   :linenos:
+
+   #此命令在主机执行
+   sudo apt install python
+   echo "helloworld,this is a script test!"
+
+
+C高亮测试
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+语法：
+
+
+::
+
+   .. code-block:: c
+      :caption: c test
+      :emphasize-lines: 4,5
+      :linenos:
+
+      #include <stdio.h>
+
+      int main()
+      {
+         printf("hello, world! This is a C program.\n");
+         for(int i=0;i<10;i++ ){
+            printf("output i=%d\n",i);
+         }
+
+         return 0;
+      }
+
+效果：
+
+.. code-block:: c
+   :caption: c test
+   :emphasize-lines: 4,5
+   :linenos:
+
+   #include <stdio.h>
+
+   int main()
+   {
+      printf("hello, world! This is a C program.\n");
+      for(int i=0;i<10;i++ ){
+         printf("output i=%d\n",i);
+      }
+
+      return 0;
+   }
+
+
+verilog高亮测试
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+语法：
+
+使用verilog或v进行高亮
+
+::
+
+   .. code-block:: v
+      :caption: verilog test
+      :emphasize-lines: 4,5
+      :linenos:
+
+      module  key_filter
+      #(
+         parameter CNT_MAX = 20'd999_999 //计数器计数最大值
+      )
+      (
+         input   wire    sys_clk     ,   //系统时钟50Mhz
+         input   wire    sys_rst_n   ,   //全局复位
+         input   wire    key_in      ,   //按键输入信号
+
+         output  reg     key_flag        //key_flag为1时表示消抖后检测到按键被按下
+                                          //key_flag为0时表示没有检测到按键被按下
+      );
+
+效果：
+
+
+.. code-block:: v
+   :caption: verilog test
+   :emphasize-lines: 4,5
+   :linenos:
+
+   module  key_filter
+   #(
+      parameter CNT_MAX = 20'd999_999 //计数器计数最大值
+   )
+   (
+      input   wire    sys_clk     ,   //系统时钟50Mhz
+      input   wire    sys_rst_n   ,   //全局复位
+      input   wire    key_in      ,   //按键输入信号
+
+      output  reg     key_flag        //key_flag为1时表示消抖后检测到按键被按下
+                                       //key_flag为0时表示没有检测到按键被按下
+   );
+
+
+literalinclude直接嵌入本地文件并高亮
+----------------------------------------------------------------------
+
+嵌入整个文件
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+直接嵌入文件，包含标题、代码语言、高亮、带编号以及名称方便引用。
+
+.. highlight:: rst
+
+
+
+插入C代码
+""""""""""""""""""""""""""""""""
+
+::
+
+   .. literalinclude:: ../../base_code/hello.c
+      :caption: ../../base_code/hello.c
+      :language: c
+      :emphasize-lines: 5,7-12
+      :linenos:
+      :name: hello.c
+
+
+插入shell代码
+""""""""""""""""""""""""""""""""
+
+语法：
+
+::
+
+   .. literalinclude:: ../../base_code/hello_world.sh
+      :caption: ../../base_code/hello_world.sh
+      :language: sh
+      :linenos:
+
+
+插入Makefile代码
+""""""""""""""""""""""""""""""""
+
+语法：
+
+::
+
+   .. literalinclude:: ../../base_code/Makefile
+      :caption: ../../base_code/Makefile
+      :language: makefile
+      :linenos:
+
+
+嵌入文件的某部分
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+通过lines指定嵌入文件的某些行。
+
+语法：
+
+::
+
+   .. literalinclude:: ../../base_code/hello.c
+      :caption: ../../base_code/hello.c
+      :language: c
+      :linenos:
+      :lines: 1,3,5-8
+
+
+
+文件对比
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+语法：
+
+::
+
+   .. literalinclude:: ../../base_code/hello.c
+   :diff: ../../base_code/hello_diff.c
+
+
 
 rtd theme 配置
 ================================
